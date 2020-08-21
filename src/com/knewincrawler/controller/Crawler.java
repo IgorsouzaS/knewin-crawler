@@ -1,9 +1,12 @@
 package com.knewincrawler.controller;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
@@ -145,7 +148,15 @@ public class Crawler {
 	
 	
 	private void config() {
-		String cd = "C:\\Users\\igors\\Documents\\ChromeDriver\\chromedriver.exe";
+		Properties prop=new Properties();
+		try {
+			FileInputStream ip = new FileInputStream("src/config.properties");
+			prop.load(ip);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String cd = prop.getProperty("chromedriverpath");
 		System.setProperty("webdriver.chrome.driver", cd);
 		
 		ChromeOptions options = new ChromeOptions();
