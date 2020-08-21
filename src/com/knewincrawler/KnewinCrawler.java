@@ -9,7 +9,6 @@ public class KnewinCrawler {
 		Crawler crawler = new Crawler(3);
 		crawler.start();
 		
-
 	}
 
 }
