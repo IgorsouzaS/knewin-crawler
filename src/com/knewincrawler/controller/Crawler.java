@@ -79,8 +79,7 @@ public class Crawler {
 					goToElement(button);
 					Thread.sleep(2000);
 					
-					JavascriptExecutor ex = (JavascriptExecutor)driver;
-					ex.executeScript("arguments[0].click();", button);
+					js.executeScript("arguments[0].click();", button);
 					
 					Thread.sleep(6000);
 					links = new ArrayList<WebElement>(this.driver.findElements(By.xpath("//span[contains(@class, 'hl-title') and contains(@class, 'hl-title-2')]")));
@@ -121,7 +120,6 @@ public class Crawler {
 				
 				WebDriverWait wait = new WebDriverWait(this.driver, 10);
 				WebElement tituloElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(@class, 'page-title-1')]")));
-				//WebElement tituloElement = this.driver.findElement(By.xpath("//h1[contains(@class, 'page-title-1')]"));
 				if(tituloElement != null) {
 					goToElement(tituloElement);
 					noticia.setTitulo(tituloElement.getText());
